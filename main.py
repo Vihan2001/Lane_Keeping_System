@@ -64,9 +64,18 @@ plt.show()
 t = solution.t
 theta = solution.y[2] #theta value from 3nd element of array
 plt.plot(t, theta)
-plt.xlabel('time (s')
+plt.xlabel('time (s)')
 plt.ylabel('theta (radians)')
 plt.grid()
 plt.show()
 
-#<--- OPEN LOOP SYSTEM with no controller
+#Q1)2 plot on x-y plane
+x = solution.y[0]
+y = solution.y[1]
+plt.plot(x, y) #plot on x-y plane
+plt.xlabel("x coordinate (m)")
+plt.ylabel("y coordinate (m)")
+plt.grid()
+plt.show()
+
+#-OPEN LOOP SYSTEM with no controller-
