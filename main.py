@@ -25,7 +25,7 @@ u = np.deg2rad(-2) #radians and counterclockwise with positive co-efficient due 
 
 def system_dynamics(t, z): #putting eq of motion into a function of the state z
 
-    theta = z[2] #2th element of z array
+    theta = z[2] #3rd element of z array
     return [v * np.cos(theta),  #put the eq of motion
             v* np.sin(theta),
             v * np.tan(u)/L]
@@ -33,7 +33,7 @@ def system_dynamics(t, z): #putting eq of motion into a function of the state z
 #Simulation
 #IVP consist's of differential eq z' = f(z) and given initial condition z(0)
 
-t_final = 3 #to what time(s) will the system be simulated
+t_final = 2 #to what time(s) will the system be simulated
 z_intial = [0, 0.3, np.deg2rad(5)] #intial state z(0), what is x,y & theta at time=0
 
 solution = solve_ivp(system_dynamics,
@@ -73,8 +73,8 @@ plt.show()
 x = solution.y[0]
 y = solution.y[1]
 plt.plot(x, y) #plot on x-y plane
-plt.xlabel("x coordinate (m)")
-plt.ylabel("y coordinate (m)")
+plt.xlabel("x-plane (m)")
+plt.ylabel("y-plane (m)")
 plt.grid()
 plt.show()
 
