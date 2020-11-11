@@ -40,10 +40,10 @@ solution = solve_ivp(system_dynamics,
                      [0, t_final],
                      z_intial,
                      t_eval = np.linspace(0, t_final, 250)) #Pass Arguments and use t_eval to increase resolution by including more points
-#print("time =",solution.t) # t sol is array of time intervals from to t_final so it shows list of t values
-#print("x = ", solution.y[0]) # y is z, the way python calls the solution, y[0] is x
-#print("y = ", solution.y[1]) #y[1] is y
-#print("theta = ", solution.y[2]) #y[2] is pose or theta angle
+print("time =",solution.t) # t sol is array of time intervals from to t_final so it shows list of t values
+print("x = ", solution.y[0]) # y is z, the way python calls the solution, y[0] is x
+print("y = ", solution.y[1]) #y[1] is y
+print("theta = ", solution.y[2]) #y[2] is pose or theta angle
 
 t = solution.t
 x = solution.y[0] #x value from 1st element of array

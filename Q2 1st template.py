@@ -58,7 +58,7 @@ class PIDController: #Adding a controller element
 
 dt= 0.025 #used for sampling rate (s)
 audi = Car(length =2.3, y=0.3, theta= np.deg2rad(0)) #example of car and call its length
-p_controller =PIDController(kp= 0.3, ki=0.01, kd= 0.4, ts= dt)
+p_controller =PIDController(kp= 0.8, ki=0.1, kd= 0.4, ts= dt)
 
 
 #print(audi.y) #before applying steering angle
@@ -81,19 +81,28 @@ for idx_t in range(2000): #looping the car moving 1000 times
     #print("Y coordinate is", audi.y) #Audi at y-axis
 
 
+# Steering Angle vs t(s)
+
+dt = 0.025
+audi = Car(length=2.3, y=0.3)
 u_cache = [p_controller.control(y=audi.y)]
-t_cache = [0]
-u_distb = np.deg2rad(1)
+u_bias = np.deg2rad(1)
+
 for idx_t in range(2000):
     u = p_controller.control(y=audi.y)
-    audi.move(u + u_distb, dt)
+    audi.move(u + u_bias, dt)
     u_cache = np.append(u_cache, audi.y)
-    t_cache += [(idx_t + 1) * dt]
 
+#plot for steering angle vs t(s)
+plt.plot(t_cache,u_cache,label='Steering angle')
+plt.xlabel("Time(s)")
+plt.ylabel("Steering Angle")
+plt.grid()
+plt.show()
 
-
-plt.plot(t_cache, u_cache)
+#plot for y-coordinate vs t(s)
+plt.plot(t_cache, y_cache)
 plt.xlabel("Time (s)")
-plt.ylabel("Steering Angle (radians)")
+plt.ylabel("y-plane(m)")
 plt.grid()
 plt.show()
